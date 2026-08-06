@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="/">FreshMart</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products">Products</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders">Orders</a></li>
+<li><a href="/profile">Profile</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="checkout-container">
+
+<div class="checkout-form">
+
+<h2>Billing Details</h2>
+
+<form action="/checkout" method="POST">
+
+<input
+type="text"
+name="fullname"
+placeholder="Full Name"
+required>
+
+<input
+type="email"
+name="email"
+placeholder="Email Address"
+required>
+
+<input
+type="text"
+name="phone"
+placeholder="Mobile Number"
+required>
+
+<textarea
+name="address"
+rows="4"
+placeholder="Delivery Address"
+required></textarea>
+
+<select
+name="payment"
+required>
+
+<option value="">Select Payment Method</option>
+<option value="Cash on Delivery">Cash on Delivery</option>
+<option value="UPI">UPI</option>
+<option value="Credit Card">Credit Card</option>
+<option value="Debit Card">Debit Card</option>
+
+</select>
+
+<button
+type="submit"
+class="place-order-btn">
+
+Place Order
+
+</button>
+
+</form>
+
+</div>
+
+<div class="order-summary">
+
+<h2>Order Summary</h2>
+
+{% for item in cart_items %}
+
+<div class="summary-item">
+
+<span>
+
+{{ item.product_name }}
+×
+{{ item.quantity }}
+
+</span>
+
+<span>
+
+₹{{ item.price * item.quantity }}
+
+</span>
+
+</div>
+
+{% endfor %}
+
+<hr>
+
+<div class="summary-item">
+
+<span>Subtotal</span>
+
+<span>
+
+₹{{ total }}
+
+</span>
+
+</div>
+
+<div class="summary-item">
+
+<span>Delivery Charge</span>
+
+<span>
+
+₹50
+
+</span>
+
+</div>
+
+<hr>
+
+<div class="summary-total">
+
+<span>Grand Total</span>
+
+<span>
+
+₹{{ total + 50 }}
+
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
