@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreshMart | Online Grocery Store</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">
+            <a href="/">FreshMart</a>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/cart">Cart</a></li>
+            <li><a href="/orders">Orders</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/login">Login</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Fresh Groceries Delivered to Your Doorstep</h1>
+        <p>Buy fresh fruits, vegetables, dairy products, bakery items and daily essentials at the best prices.</p>
+
+        <a href="/products" class="btn">Shop Now</a>
+    </div>
+</section>
+
+<section class="categories">
+
+    <h2>Shop by Category</h2>
+
+    <div class="category-container">
+
+        <div class="category-card">
+            <i class="fa-solid fa-apple-whole"></i>
+            <h3>Fruits</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-carrot"></i>
+            <h3>Vegetables</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-cheese"></i>
+            <h3>Dairy</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h3>Beverages</h3>
+        </div>
+
+        <div class="category-card">
+            <i class="fa-solid fa-bread-slice"></i>
+            <h3>Bakery</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="features">
+
+    <div class="feature-box">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h3>Fast Delivery</h3>
+        <p>Delivery within 24 hours.</p>
+    </div>
+
+    <div class="feature-box">
+        <i class="fa-solid fa-leaf"></i>
+        <h3>Fresh Products</h3>
+        <p>Directly sourced from trusted farms.</p>
+    </div>
+
+    <div class="feature-box">
+        <i class="fa-solid fa-wallet"></i>
+        <h3>Affordable Prices</h3>
+        <p>Best quality at the lowest prices.</p>
+    </div>
+
+</section>
+
+<section class="about">
+
+    <h2>Why Choose FreshMart?</h2>
+
+    <p>
+        FreshMart provides premium quality groceries with secure payments,
+        fast delivery, easy ordering and reliable customer service.
+    </p>
+
+</section>
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>FreshMart</h2>
+
+        <p>Your Trusted Online Grocery Store</p>
+
+        <div class="social-icons">
+
+            <a href="#"><i class="fab fa-facebook"></i></a>
+
+            <a href="#"><i class="fab fa-instagram"></i></a>
+
+            <a href="#"><i class="fab fa-twitter"></i></a>
+
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+
+        </div>
+
+        <p>© 2026 FreshMart. All Rights Reserved.</p>
+
+    </div>
+
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
