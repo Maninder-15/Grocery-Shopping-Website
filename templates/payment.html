@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/payment.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="/">FreshMart</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products">Products</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/checkout">Checkout</a></li>
+<li><a href="/payment" class="active">Payment</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="payment-container">
+
+<div class="payment-form">
+
+<h2>Payment Details</h2>
+
+<form action="/orders" method="POST">
+
+<div class="payment-method">
+
+<label>
+<input type="radio" name="payment" value="Card" checked>
+Credit / Debit Card
+</label>
+
+<label>
+<input type="radio" name="payment" value="UPI">
+UPI
+</label>
+
+<label>
+<input type="radio" name="payment" value="COD">
+Cash on Delivery
+</label>
+
+</div>
+
+<input
+type="text"
+name="cardname"
+placeholder="Card Holder Name"
+required>
+
+<input
+type="text"
+name="cardnumber"
+placeholder="Card Number"
+maxlength="16"
+required>
+
+<div class="card-row">
+
+<input
+type="text"
+name="expiry"
+placeholder="MM/YY"
+maxlength="5"
+required>
+
+<input
+type="password"
+name="cvv"
+placeholder="CVV"
+maxlength="3"
+required>
+
+</div>
+
+<button type="submit" class="pay-btn">
+Pay Now
+</button>
+
+</form>
+
+</div>
+
+<div class="payment-summary">
+
+<h2>Order Summary</h2>
+
+<div class="summary-row">
+<span>Items</span>
+<span>₹250</span>
+</div>
+
+<div class="summary-row">
+<span>Delivery</span>
+<span>₹50</span>
+</div>
+
+<hr>
+
+<div class="summary-total">
+<span>Total</span>
+<span>₹300</span>
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
