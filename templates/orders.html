@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/orders.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="/">FreshMart</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products">Products</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders" class="active">Orders</a></li>
+<li><a href="/profile">Profile</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="orders-container">
+
+<h1>My Orders</h1>
+
+{% if order_data %}
+
+{% for data in order_data %}
+
+<div class="order-card">
+
+<div class="order-header">
+
+<div>
+<h3>Order #{{ data.order.order_id }}</h3>
+<p>{{ data.order.order_date }}</p>
+</div>
+
+<div>
+
+<span class="status">
+
+{{ data.order.order_status }}
+
+</span>
+
+</div>
+
+</div>
+
+<table>
+
+<thead>
+
+<tr>
+<th>Product</th>
+<th>Quantity</th>
+<th>Price</th>
+<th>Total</th>
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for item in data.items %}
+
+<tr>
+
+<td>
+
+{{ item.product_name }}
+
+</td>
+
+<td>
+
+{{ item.quantity }}
+
+</td>
+
+<td>
+
+₹{{ item.price }}
+
+</td>
+
+<td>
+
+₹{{ item.price * item.quantity }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+<div class="order-footer">
+
+<div>
+
+<strong>Payment :</strong>
+
+{{ data.order.payment_method }}
+
+</div>
+
+<div>
+
+<strong>Total :</strong>
+
+₹{{ data.order.total_amount }}
+
+</div>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+{% else %}
+
+<div class="empty-orders">
+
+<i class="fa-solid fa-box-open"></i>
+
+<h2>No Orders Found</h2>
+
+<p>You haven't placed any orders yet.</p>
+
+<a href="/products" class="shop-btn">
+
+Start Shopping
+
+</a>
+
+</div>
+
+{% endif %}
+
+</section>
+
+</body>
+</html>
