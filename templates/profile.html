@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="/">FreshMart</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products">Products</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders">Orders</a></li>
+<li><a href="/profile" class="active">Profile</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="profile-container">
+
+<div class="profile-card">
+
+<div class="profile-image">
+
+<img src="{{ url_for('static', filename='images/user.png') }}" alt="User">
+
+<h2>John Doe</h2>
+
+<p>john@example.com</p>
+
+</div>
+
+<div class="profile-details">
+
+<h3>Personal Information</h3>
+
+<form action="/profile" method="POST">
+
+<div class="input-group">
+
+<label>Full Name</label>
+
+<input
+type="text"
+name="fullname"
+value="John Doe"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<input
+type="email"
+name="email"
+value="john@example.com"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Mobile Number</label>
+
+<input
+type="text"
+name="phone"
+value="9876543210"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Delivery Address</label>
+
+<textarea
+name="address"
+rows="4"
+required>Street 1, City, State</textarea>
+
+</div>
+
+<div class="input-group">
+
+<label>New Password</label>
+
+<input
+type="password"
+name="password"
+placeholder="Enter New Password">
+
+</div>
+
+<button
+type="submit"
+class="save-btn">
+Update Profile
+</button>
+
+<a
+href="/login"
+class="logout-btn">
+Logout
+</a>
+
+</form>
+
+</div>
+
+<div class="profile-summary">
+
+<h3>Account Summary</h3>
+
+<div class="summary-box">
+
+<div class="summary-item">
+<i class="fa-solid fa-bag-shopping"></i>
+<h4>15</h4>
+<p>Total Orders</p>
+</div>
+
+<div class="summary-item">
+<i class="fa-solid fa-clock"></i>
+<h4>3</h4>
+<p>Pending</p>
+</div>
+
+<div class="summary-item">
+<i class="fa-solid fa-circle-check"></i>
+<h4>12</h4>
+<p>Delivered</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</body>
+</html>
