@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-box">
+
+        <h2>Create Account</h2>
+
+        <p>Register to start shopping with FreshMart</p>
+
+        <form action="/register" method="POST">
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="fullname" placeholder="Full Name" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="email" placeholder="Email Address" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-phone"></i>
+                <input type="text" name="phone" placeholder="Mobile Number" required>
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-location-dot"></i>
+                <input type="text" name="address" placeholder="Address" required>
+            </div>
+
+            <div class="input-box password-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" name="password" placeholder="Password" required>
+
+                <span id="togglePassword">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+
+            <div class="input-box password-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm Password" required>
+
+                <span id="toggleConfirmPassword">
+                    <i class="fa-solid fa-eye"></i>
+                </span>
+            </div>
+
+            <button type="submit" class="login-btn">
+                Register
+            </button>
+
+        </form>
+
+        <div class="register-link">
+            <p>
+                Already have an account?
+                <a href="/login">Login</a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+const togglePassword=document.getElementById("togglePassword");
+const password=document.getElementById("password");
+
+togglePassword.addEventListener("click",()=>{
+
+    if(password.type==="password"){
+        password.type="text";
+        togglePassword.innerHTML='<i class="fa-solid fa-eye-slash"></i>';
+    }else{
+        password.type="password";
+        togglePassword.innerHTML='<i class="fa-solid fa-eye"></i>';
+    }
+
+});
+
+const toggleConfirmPassword=document.getElementById("toggleConfirmPassword");
+const confirmPassword=document.getElementById("confirmPassword");
+
+toggleConfirmPassword.addEventListener("click",()=>{
+
+    if(confirmPassword.type==="password"){
+        confirmPassword.type="text";
+        toggleConfirmPassword.innerHTML='<i class="fa-solid fa-eye-slash"></i>';
+    }else{
+        confirmPassword.type="password";
+        toggleConfirmPassword.innerHTML='<i class="fa-solid fa-eye"></i>';
+    }
+
+});
+
+document.querySelector("form").addEventListener("submit",function(e){
+
+    if(password.value!==confirmPassword.value){
+
+        alert("Passwords do not match.");
+        e.preventDefault();
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
