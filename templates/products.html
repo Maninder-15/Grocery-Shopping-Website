@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+<a href="/">FreshMart</a>
+</div>
+
+<ul class="nav-links">
+<li><a href="/">Home</a></li>
+<li><a href="/products" class="active">Products</a></li>
+<li><a href="/cart">Cart</a></li>
+<li><a href="/orders">Orders</a></li>
+<li><a href="/profile">Profile</a></li>
+<li><a href="/logout">Logout</a></li>
+</ul>
+
+</nav>
+
+</header>
+
+<section class="products-section">
+
+<h1>Fresh Grocery Products</h1>
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search Product">
+
+<button>
+<i class="fa-solid fa-magnifying-glass"></i>
+</button>
+
+</div>
+
+<div class="product-grid">
+
+{% for product in products %}
+
+<div class="product-card">
+
+<img
+src="{{ url_for('static', filename='images/' + product.image) }}"
+alt="{{ product.product_name }}">
+
+<h3>{{ product.product_name }}</h3>
+
+<p>{{ product.description }}</p>
+
+<h4>₹{{ product.price }}</h4>
+
+<p class="stock">
+
+{% if product.stock > 0 %}
+
+In Stock : {{ product.stock }}
+
+{% else %}
+
+Out of Stock
+
+{% endif %}
+
+</p>
+
+<div class="buttons">
+
+<form
+action="/add_to_cart/{{ product.product_id }}"
+method="POST">
+
+<button
+type="submit"
+class="cart-btn">
+
+Add to Cart
+
+</button>
+
+</form>
+
+<form
+action="/buy_now/{{ product.product_id }}"
+method="POST">
+
+<button
+type="submit"
+class="buy-btn">
+
+Buy Now
+
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</section>
+
+<script src="{{ url_for('static', filename='js/products.js') }}"></script>
+
+</body>
+</html>
