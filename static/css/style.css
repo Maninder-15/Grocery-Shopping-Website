@@ -1,0 +1,251 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f8f9fa;
+    color:#333;
+}
+
+a{
+    text-decoration:none;
+}
+
+ul{
+    list-style:none;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    background:#2e7d32;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo a{
+    color:#fff;
+    font-size:30px;
+    font-weight:700;
+}
+
+.nav-links{
+    display:flex;
+    gap:30px;
+}
+
+.nav-links li a{
+    color:#fff;
+    font-size:16px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links li a:hover{
+    color:#ffe082;
+}
+
+.hero{
+    height:90vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),url("../images/grocery-banner.jpg");
+    background-size:cover;
+    background-position:center;
+    color:#fff;
+    padding:20px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero-content h1{
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+.hero-content p{
+    font-size:18px;
+    margin-bottom:35px;
+    line-height:1.8;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 35px;
+    background:#43a047;
+    color:#fff;
+    border-radius:5px;
+    font-size:18px;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:#2e7d32;
+}
+
+.categories{
+    padding:80px 8%;
+    text-align:center;
+}
+
+.categories h2{
+    font-size:36px;
+    margin-bottom:40px;
+}
+
+.category-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:25px;
+}
+
+.category-card{
+    background:#fff;
+    padding:35px 20px;
+    border-radius:12px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+    transition:.3s;
+    cursor:pointer;
+}
+
+.category-card:hover{
+    transform:translateY(-10px);
+}
+
+.category-card i{
+    font-size:55px;
+    color:#43a047;
+    margin-bottom:15px;
+}
+
+.category-card h3{
+    font-size:22px;
+}
+
+.features{
+    padding:70px 8%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.feature-box{
+    background:#fff;
+    padding:35px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.feature-box i{
+    font-size:50px;
+    color:#43a047;
+    margin-bottom:20px;
+}
+
+.feature-box h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.feature-box p{
+    color:#666;
+    line-height:1.7;
+}
+
+.about{
+    padding:80px 10%;
+    text-align:center;
+    background:#fff;
+}
+
+.about h2{
+    font-size:36px;
+    margin-bottom:25px;
+}
+
+.about p{
+    max-width:900px;
+    margin:auto;
+    font-size:18px;
+    line-height:1.9;
+    color:#555;
+}
+
+footer{
+    background:#1b5e20;
+    color:#fff;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.footer-content h2{
+    margin-bottom:10px;
+    font-size:32px;
+}
+
+.footer-content p{
+    margin:12px 0;
+}
+
+.social-icons{
+    margin:25px 0;
+}
+
+.social-icons a{
+    color:#fff;
+    font-size:24px;
+    margin:0 12px;
+    transition:.3s;
+}
+
+.social-icons a:hover{
+    color:#ffe082;
+}
+
+@media(max-width:768px){
+
+.navbar{
+    flex-direction:column;
+    gap:20px;
+}
+
+.nav-links{
+    flex-direction:column;
+    text-align:center;
+    gap:15px;
+}
+
+.hero{
+    height:auto;
+    padding:100px 20px;
+}
+
+.hero-content h1{
+    font-size:36px;
+}
+
+.hero-content p{
+    font-size:16px;
+}
+
+.categories h2,
+.about h2{
+    font-size:30px;
+}
+
+.btn{
+    padding:12px 28px;
+}
+
+}
