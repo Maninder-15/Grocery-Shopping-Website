@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | FreshMart</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css', v=1) }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="admin-container">
+
+<div class="sidebar">
+
+<h2>FreshMart</h2>
+
+<ul>
+
+<li>
+<a href="/admin">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/admin/products">
+<i class="fa-solid fa-box"></i>
+Products
+</a>
+</li>
+
+<li>
+<a href="/admin/categories">
+<i class="fa-solid fa-list"></i>
+Categories
+</a>
+</li>
+
+<li>
+<a href="/admin/customers">
+<i class="fa-solid fa-users"></i>
+Customers
+</a>
+</li>
+
+<li>
+<a href="/admin/orders">
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+</a>
+</li>
+
+<li>
+<a href="/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="main-content">
+
+<div class="topbar">
+
+<h1>Admin Dashboard</h1>
+
+</div>
+
+<div class="cards">
+
+<div class="card">
+
+<i class="fa-solid fa-users"></i>
+
+<h2>{{ total_customers }}</h2>
+
+<p>Total Customers</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-box-open"></i>
+
+<h2>{{ total_products }}</h2>
+
+<p>Total Products</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-cart-shopping"></i>
+
+<h2>{{ total_orders }}</h2>
+
+<p>Total Orders</p>
+
+</div>
+
+<div class="card">
+
+<i class="fa-solid fa-indian-rupee-sign"></i>
+
+<h2>₹{{ total_revenue }}</h2>
+
+<p>Total Revenue</p>
+
+</div>
+
+</div>
+
+<div class="table-section">
+
+<h2>Recent Orders</h2>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Order ID</th>
+<th>Customer</th>
+<th>Date</th>
+<th>Payment</th>
+<th>Total</th>
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for order in recent_orders %}
+
+<tr>
+
+<td>{{ order.order_id }}</td>
+
+<td>{{ order.full_name }}</td>
+
+<td>{{ order.order_date }}</td>
+
+<td>{{ order.payment_method }}</td>
+
+<td>₹{{ order.total_amount }}</td>
+
+<td>
+
+<span class="status">
+
+{{ order.order_status }}
+
+</span>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>
