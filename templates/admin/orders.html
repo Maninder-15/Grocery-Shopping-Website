@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Management | FreshMart Admin</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="admin-container">
+
+<div class="sidebar">
+
+<h2>FreshMart</h2>
+
+<ul>
+
+<li>
+<a href="/admin/dashboard">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/admin/products">
+<i class="fa-solid fa-box"></i>
+Products
+</a>
+</li>
+
+<li>
+<a href="/admin/categories">
+<i class="fa-solid fa-list"></i>
+Categories
+</a>
+</li>
+
+<li>
+<a href="/admin/customers">
+<i class="fa-solid fa-users"></i>
+Customers
+</a>
+</li>
+
+<li>
+<a href="/admin/orders" class="active">
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+</a>
+</li>
+
+<li>
+<a href="/admin/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="main-content">
+
+<div class="topbar">
+
+<h1>Order Management</h1>
+
+</div>
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div class="success-message">
+
+{{ messages[0] }}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Order ID</th>
+<th>Customer</th>
+<th>Email</th>
+<th>Phone</th>
+<th>Payment</th>
+<th>Total</th>
+<th>Date</th>
+<th>Status</th>
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for order in orders %}
+
+<tr>
+
+<td>{{ order.order_id }}</td>
+
+<td>{{ order.customer_name }}</td>
+
+<td>{{ order.email }}</td>
+
+<td>{{ order.phone }}</td>
+
+<td>{{ order.payment_method }}</td>
+
+<td>₹{{ order.total_amount }}</td>
+
+<td>{{ order.order_date }}</td>
+
+<td>
+
+<form
+action="/admin/update_order/{{ order.order_id }}"
+method="POST">
+
+<select
+name="status"
+onchange="this.form.submit()">
+
+<option value="Pending"
+{% if order.order_status=="Pending" %}selected{% endif %}>
+Pending
+</option>
+
+<option value="Processing"
+{% if order.order_status=="Processing" %}selected{% endif %}>
+Processing
+</option>
+
+<option value="Shipped"
+{% if order.order_status=="Shipped" %}selected{% endif %}>
+Shipped
+</option>
+
+<option value="Delivered"
+{% if order.order_status=="Delivered" %}selected{% endif %}>
+Delivered
+</option>
+
+<option value="Cancelled"
+{% if order.order_status=="Cancelled" %}selected{% endif %}>
+Cancelled
+</option>
+
+</select>
+
+</form>
+
+</td>
+
+<td>
+
+<a
+href="/admin/delete_order/{{ order.order_id }}"
+class="delete-btn"
+onclick="return confirm('Delete this order?')">
+
+<i class="fa-solid fa-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
