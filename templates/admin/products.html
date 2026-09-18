@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Products | FreshMart Admin</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="admin-container">
+
+<div class="sidebar">
+
+<h2>FreshMart</h2>
+
+<ul>
+
+<li>
+<a href="/admin/dashboard">
+<i class="fa-solid fa-chart-line"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="/admin/products" class="active">
+<i class="fa-solid fa-box"></i>
+Products
+</a>
+</li>
+
+<li>
+<a href="/admin/categories">
+<i class="fa-solid fa-list"></i>
+Categories
+</a>
+</li>
+
+<li>
+<a href="/admin/customers">
+<i class="fa-solid fa-users"></i>
+Customers
+</a>
+</li>
+
+<li>
+<a href="/admin/orders">
+<i class="fa-solid fa-cart-shopping"></i>
+Orders
+</a>
+</li>
+
+<li>
+<a href="/admin/logout">
+<i class="fa-solid fa-right-from-bracket"></i>
+Logout
+</a>
+</li>
+
+</ul>
+
+</div>
+
+<div class="main-content">
+
+<div class="topbar">
+
+<h1>Manage Products</h1>
+
+<a href="/admin/add_product" class="add-btn">
+
+<i class="fa-solid fa-plus"></i>
+
+Add Product
+
+</a>
+
+</div>
+
+{% with messages=get_flashed_messages() %}
+{% if messages %}
+
+<div class="success-message">
+
+{{ messages[0] }}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Image</th>
+<th>Name</th>
+<th>Category</th>
+<th>Price</th>
+<th>Stock</th>
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+{% for product in products %}
+
+<tr>
+
+<td>{{ product.product_id }}</td>
+
+<td>
+
+<img
+src="{{ url_for('static', filename='images/' + product.image) }}"
+width="60">
+
+</td>
+
+<td>{{ product.product_name }}</td>
+
+<td>{{ product.category_name }}</td>
+
+<td>₹{{ product.price }}</td>
+
+<td>{{ product.stock }}</td>
+
+<td>
+
+<a
+href="/admin/edit_product/{{ product.product_id }}"
+class="edit-btn">
+
+<i class="fa-solid fa-pen"></i>
+
+</a>
+
+<a
+href="/admin/delete_product/{{ product.product_id }}"
+class="delete-btn"
+onclick="return confirm('Delete this product?')">
+
+<i class="fa-solid fa-trash"></i>
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</body>
+</html>
